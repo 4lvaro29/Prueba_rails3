@@ -9,10 +9,12 @@
 Song.destroy_all
 User.destroy_all
 
-5.times  do
-	Song.create!(name: "One", duration:"8 mins", genre: "Rock")
-end
 
+user_1 = User.create(name: 'Alvaro urbina', email: 'alvaro@gmail.com', password: '123456', password_confirmation: '123456')
 
-User.create!(name: 'Alvaro', email: 'alvaro@prueba.cl', role: 2, password: 'password')
-User.create!(name: 'Diego', email: 'diego@prueba.cl', role: 1, password: 'password')
+song_1 = Song.create(name: 'One', duration: 1)
+song_2 = Song.create(name: 'Two', duration: 2)
+song_3 = Song.create(name: 'Three', duration: 2)
+song_4 = Song.create(name: 'Four', duration: 3)
+song_5 = Song.create(name: 'Five', duration: 4)
+
