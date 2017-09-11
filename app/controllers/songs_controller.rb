@@ -4,12 +4,27 @@ class SongsController < ApplicationController
   # GET /songs
   # GET /songs.json
   def index
+    @songs = current_user.songs
     @songs = Song.all
   end
 
   # GET /songs/1
   # GET /songs/1.json
   def show
+  end
+
+  def add_song
+    song = Song.create(user: current_user, name: @songs)
+    respond_to do |format|
+      if song.persisted?
+        format.html { redirect_to catches_url, notice: 'Agregado correctamente' }
+      else
+        format.html { render catches_url, notice: 'No se pudo agregar' }
+      end
+    end
+  end
+
+
   end
 
   # GET /songs/new
@@ -71,4 +86,4 @@ class SongsController < ApplicationController
     def song_params
       params.require(:song).permit(:name, :duration)
     end
-end
+
